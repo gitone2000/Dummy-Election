@@ -1,0 +1,1343 @@
+/*=====================================================
+  ANALISIS WILAYAH
+  Mengikuti token warna & komponen dari style.css global
+=====================================================*/
+
+.analisis-container {
+  padding: 30px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 25px;
+}
+
+/*=====================================================
+  PAGE HEADER
+=====================================================*/
+
+.analisis-container .page-header h1 {
+  font-size: 28px;
+
+  margin-bottom: 6px;
+}
+
+.analisis-container .page-header p {
+  color: var(--text-light);
+
+  max-width: 640px;
+}
+
+/*=====================================================
+  FILTER BAR
+=====================================================*/
+
+.filter-bar {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: flex-end;
+
+  gap: 16px;
+
+  background: #fff;
+
+  padding: 20px;
+
+  border-radius: 16px;
+
+  box-shadow: var(--shadow);
+}
+
+.filter-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+  min-width: 160px;
+
+  flex: 1;
+}
+
+.filter-group label {
+  font-size: 12px;
+
+  font-weight: 600;
+
+  color: var(--text-light);
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.03em;
+}
+
+.filter-group select {
+  padding: 10px 12px;
+
+  border-radius: 10px;
+
+  border: 1px solid var(--border);
+
+  background: #f9fafb;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  color: var(--text);
+
+  cursor: pointer;
+}
+
+.filter-group select:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+}
+
+.filter-group select:focus {
+  outline: none;
+
+  border-color: var(--primary);
+
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+.btn-reset-filter {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  border: none;
+
+  background: #f3f4f6;
+
+  color: var(--text);
+
+  padding: 10px 18px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  transition: 0.25s;
+
+  height: 42px;
+}
+
+.btn-reset-filter:hover {
+  background: var(
+    --gradient-primary,
+    linear-gradient(135deg, #4f46e5, #6366f1)
+  );
+
+  color: #fff;
+}
+
+/*=====================================================
+  TABLE RESPONSIVE (WAJIB - tanpa ini tabel lebar akan
+  meluber dan menabrak widget lain)
+=====================================================*/
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-responsive table {
+  min-width: 760px;
+}
+
+/*=====================================================
+  MODE TABS
+=====================================================*/
+
+.mode-tabs {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+.mode-tab {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  border: none;
+
+  background: #eef2ff;
+
+  color: #374151;
+
+  padding: 12px 18px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-weight: 500;
+
+  font-size: 14px;
+
+  transition: 0.25s;
+}
+
+.mode-tab:hover {
+  background: #e0e7ff;
+}
+
+.mode-tab.active {
+  background: var(
+    --gradient-brand,
+    linear-gradient(90deg, #4f46e5, #ec4899, #06b6d4)
+  );
+
+  color: #fff;
+
+  box-shadow: 0 8px 18px rgba(79, 70, 229, 0.25);
+}
+
+/*=====================================================
+  KPI GRID
+=====================================================*/
+
+.analisis-kpi-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.analisis-kpi-card {
+  position: relative;
+
+  background: #fff;
+
+  border: 1px solid var(--border);
+
+  border-radius: 16px;
+
+  padding: 22px;
+
+  overflow: hidden;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.analisis-kpi-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  right: 0;
+
+  height: 4px;
+
+  background: var(
+    --gradient-brand,
+    linear-gradient(90deg, #4f46e5, #ec4899, #06b6d4)
+  );
+}
+
+.analisis-kpi-card span {
+  font-size: 13px;
+
+  color: var(--text-light);
+
+  font-weight: 500;
+}
+
+.analisis-kpi-card h2 {
+  font-size: 28px;
+
+  margin: 10px 0 6px;
+
+  color: var(--text);
+}
+
+.analisis-kpi-card small {
+  font-size: 12px;
+
+  color: #9ca3af;
+}
+
+.analisis-kpi-card.gap-positive h2 {
+  color: var(--danger);
+}
+
+.analisis-kpi-card.gap-negative h2 {
+  color: var(--success);
+}
+
+/*=====================================================
+  WIDGET & GRID
+=====================================================*/
+
+.analisis-grid {
+  display: grid;
+
+  grid-template-columns: 2fr 1fr;
+
+  gap: 24px;
+
+  align-items: stretch;
+}
+
+.analisis-widget {
+  position: relative;
+
+  background: #fff;
+
+  border-radius: 18px;
+
+  padding: 24px;
+
+  box-shadow: var(--shadow);
+
+  overflow: hidden;
+}
+
+.analisis-widget::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  right: 0;
+
+  height: 4px;
+
+  background: var(
+    --gradient-brand,
+    linear-gradient(90deg, #4f46e5, #ec4899, #06b6d4)
+  );
+}
+
+.analisis-widget-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 18px;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.analisis-widget-header h3 {
+  font-size: 17px;
+
+  font-weight: 600;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.analisis-widget-header h3 i {
+  color: var(--primary);
+}
+
+.analisis-widget-header span {
+  font-size: 13px;
+
+  color: var(--text-light);
+}
+
+/*=====================================================
+  MAP
+=====================================================*/
+
+.analisis-map-container {
+  width: 100%;
+
+  height: 460px;
+
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+}
+
+/*=====================================================
+  RANKING LIST
+=====================================================*/
+
+.ranking-list {
+  list-style: none;
+
+  margin: 0;
+
+  padding: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+  max-height: 460px;
+
+  overflow-y: auto;
+}
+
+.ranking-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px 14px;
+
+  border-radius: 12px;
+
+  background: #f9fafb;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.ranking-item:hover {
+  background: #eef2ff;
+}
+
+.ranking-rank {
+  width: 28px;
+
+  height: 28px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color: #fff;
+
+  background: var(
+    --gradient-primary,
+    linear-gradient(135deg, #4f46e5, #6366f1)
+  );
+
+  flex-shrink: 0;
+}
+
+.ranking-item:nth-child(1) .ranking-rank {
+  background: linear-gradient(135deg, #d97706, #fbbf24);
+}
+
+.ranking-item:nth-child(2) .ranking-rank {
+  background: linear-gradient(135deg, #6b7280, #9ca3af);
+}
+
+.ranking-item:nth-child(3) .ranking-rank {
+  background: linear-gradient(135deg, #b45309, #d97706);
+}
+
+.ranking-info {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.ranking-info strong {
+  display: block;
+
+  font-size: 14px;
+
+  color: var(--text);
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.ranking-info small {
+  color: var(--text-light);
+
+  font-size: 12px;
+}
+
+.ranking-gap {
+  font-size: 13px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.ranking-gap.positive {
+  color: var(--danger);
+}
+
+.ranking-gap.negative {
+  color: var(--success);
+}
+
+/*=====================================================
+  CHART CONTAINERS
+=====================================================*/
+
+.analisis-chart-container {
+  width: 100%;
+
+  height: 340px;
+}
+
+/*=====================================================
+  SIMULASI PANEL
+=====================================================*/
+
+.simulasi-widget {
+  display: none;
+}
+
+.simulasi-widget.visible {
+  display: block;
+}
+
+.simulasi-body {
+  display: grid;
+
+  grid-template-columns: 1fr 1.2fr;
+
+  gap: 30px;
+
+  align-items: start;
+}
+
+.simulasi-control {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.simulasi-control label {
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: var(--text-light);
+}
+
+.simulasi-control select {
+  padding: 10px 12px;
+
+  border-radius: 10px;
+
+  border: 1px solid var(--border);
+
+  font-family: inherit;
+
+  font-size: 14px;
+}
+
+.simulasi-control input[type="range"] {
+  width: 100%;
+
+  accent-color: var(--primary);
+}
+
+.simulasi-control strong {
+  color: var(--primary);
+}
+
+.simulasi-result {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 14px;
+}
+
+.simulasi-stat {
+  background: #f9fafb;
+
+  border-radius: 12px;
+
+  padding: 16px;
+}
+
+.simulasi-stat span {
+  font-size: 12px;
+
+  color: var(--text-light);
+}
+
+.simulasi-stat strong {
+  display: block;
+
+  font-size: 20px;
+
+  margin-top: 6px;
+
+  color: var(--text);
+}
+
+.simulasi-stat.status-kuat strong {
+  color: var(--success);
+}
+
+.simulasi-stat.status-potensial strong {
+  color: var(--warning);
+}
+
+.simulasi-stat.status-lemah strong {
+  color: var(--danger);
+}
+
+/*=====================================================
+  KOMPETITOR PLACEHOLDER
+=====================================================*/
+
+.kompetitor-widget {
+  display: none;
+}
+
+.kompetitor-widget.visible {
+  display: block;
+}
+
+.empty-state {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+
+  gap: 12px;
+
+  padding: 40px 20px;
+
+  color: var(--text-light);
+}
+
+.empty-state i {
+  font-size: 32px;
+
+  color: var(--primary-light);
+}
+
+.empty-state p {
+  max-width: 420px;
+}
+
+/*=====================================================
+  REKOMENDASI
+=====================================================*/
+
+.rekomendasi-list {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+  gap: 16px;
+}
+
+.rekomendasi-card {
+  border-radius: 14px;
+
+  padding: 18px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(79, 70, 229, 0.06),
+    rgba(236, 72, 153, 0.05)
+  );
+
+  border: 1px solid rgba(79, 70, 229, 0.12);
+}
+
+.rekomendasi-card .rekomendasi-rank {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color: #fff;
+
+  background: var(
+    --gradient-primary,
+    linear-gradient(135deg, #4f46e5, #6366f1)
+  );
+
+  padding: 4px 10px;
+
+  border-radius: 999px;
+
+  margin-bottom: 10px;
+}
+
+.rekomendasi-card h4 {
+  font-size: 16px;
+
+  margin-bottom: 6px;
+}
+
+.rekomendasi-card p {
+  font-size: 13px;
+
+  color: var(--text-light);
+
+  line-height: 1.6;
+}
+
+.rekomendasi-card strong {
+  color: var(--danger);
+}
+
+/*=====================================================
+  TABEL PRIORITAS (badge status)
+=====================================================*/
+
+.priority-badge {
+  display: inline-block;
+
+  padding: 5px 12px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+.priority-badge.tinggi {
+  background: #fee2e2;
+
+  color: #dc2626;
+}
+
+.priority-badge.sedang {
+  background: #fef3c7;
+
+  color: #b45309;
+}
+
+.priority-badge.rendah {
+  background: #dcfce7;
+
+  color: #15803d;
+}
+
+/*=====================================================
+  MAP LEGEND & LABEL (Leaflet)
+=====================================================*/
+
+.map-legend {
+  background: #ffffff;
+
+  padding: 12px 16px;
+
+  border-radius: 12px;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  font-size: 13px;
+
+  line-height: 1.8;
+}
+
+.map-legend h4 {
+  margin: 0 0 8px;
+
+  font-size: 14px;
+
+  color: #111827;
+}
+
+.map-area-label {
+  background: transparent !important;
+
+  border: none !important;
+
+  box-shadow: none !important;
+
+  font-weight: 600;
+
+  font-size: 11px;
+
+  color: #111827;
+
+  text-shadow:
+    0 0 3px #fff,
+    0 0 3px #fff,
+    0 0 3px #fff;
+}
+
+/*=====================================================
+  SCOPE NOTE (dipakai di widget data real)
+=====================================================*/
+
+.scope-note {
+  margin: -6px 0 0;
+  font-size: 12px;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.scope-note i {
+  color: var(--primary-light);
+}
+
+/*=====================================================
+  POTENSI HISTORIS 2019 & 2024 - RINGKASAN KPI
+=====================================================*/
+
+.potensi-summary-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 18px;
+
+  margin-top: 18px;
+}
+
+.potensi-summary-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  background: #f9fafb;
+
+  border: 1px solid var(--border);
+
+  border-radius: 16px;
+
+  padding: 18px;
+}
+
+.potensi-summary-icon {
+  width: 46px;
+
+  height: 46px;
+
+  min-width: 46px;
+
+  border-radius: 12px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 18px;
+}
+
+.potensi-summary-icon.icon-blue {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.potensi-summary-icon.icon-green {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.potensi-summary-icon.icon-purple {
+  background: #ede9fe;
+  color: #7c3aed;
+}
+
+.potensi-summary-icon.icon-orange {
+  background: #ffedd5;
+  color: #ea580c;
+}
+
+.potensi-summary-text span {
+  display: block;
+
+  font-size: 12px;
+
+  color: var(--text-light);
+
+  font-weight: 500;
+}
+
+.potensi-summary-text h3 {
+  font-size: 20px;
+
+  margin: 4px 0 2px;
+
+  color: var(--text);
+}
+
+.potensi-summary-text small {
+  font-size: 11px;
+
+  color: #9ca3af;
+}
+
+/*=====================================================
+  TIER SECTIONS (KLASTER WILAYAH)
+=====================================================*/
+
+.tier-section {
+  margin-top: 30px;
+}
+
+.tier-section-header {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 14px;
+
+  padding-bottom: 14px;
+
+  border-bottom: 1px solid var(--border);
+
+  margin-bottom: 18px;
+}
+
+.tier-badge {
+  flex-shrink: 0;
+
+  padding: 6px 14px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color: #fff;
+
+  white-space: nowrap;
+}
+
+.tier-section-header.tier-1 .tier-badge {
+  background: linear-gradient(135deg, #dc2626, #f87171);
+}
+
+.tier-section-header.tier-2 .tier-badge {
+  background: linear-gradient(135deg, #d97706, #fbbf24);
+}
+
+.tier-section-header.tier-3 .tier-badge {
+  background: linear-gradient(135deg, #475569, #94a3b8);
+}
+
+.tier-section-header h4 {
+  font-size: 16px;
+
+  margin-bottom: 4px;
+}
+
+.tier-section-header p {
+  font-size: 13px;
+
+  color: var(--text-light);
+
+  line-height: 1.6;
+}
+
+.tier-grid {
+  display: grid;
+
+  gap: 16px;
+}
+
+.tier-grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.tier-grid-1 {
+  grid-template-columns: 1fr;
+}
+
+.tier-card {
+  position: relative;
+
+  background: #fff;
+
+  border: 1px solid var(--border);
+
+  border-radius: 16px;
+
+  padding: 20px;
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.tier-card-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 10px;
+}
+
+.tier-rank {
+  width: 26px;
+
+  height: 26px;
+
+  border-radius: 50%;
+
+  background: #111827;
+
+  color: #fff;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.tier-card-icon {
+  width: 40px;
+
+  height: 40px;
+
+  border-radius: 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 16px;
+}
+
+.tier-card-icon.icon-blue {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.tier-card-icon.icon-amber {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.tier-card-icon.icon-teal {
+  background: #ccfbf1;
+  color: #0f766e;
+}
+
+.tier-card-icon.icon-rose {
+  background: #ffe4e6;
+  color: #be123c;
+}
+
+.tier-card-icon.icon-cyan {
+  background: #cffafe;
+  color: #0e7490;
+}
+
+.tier-card-icon.icon-indigo {
+  background: #e0e7ff;
+  color: #4338ca;
+}
+
+.tier-card-icon.icon-slate {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.tier-card h5 {
+  font-size: 15px;
+
+  margin-bottom: 10px;
+
+  min-height: 40px;
+}
+
+.tier-card-value {
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+}
+
+.tier-card-value strong {
+  font-size: 22px;
+
+  color: var(--text);
+}
+
+.tier-percent {
+  font-size: 13px;
+
+  font-weight: 700;
+
+  color: #fff;
+
+  background: var(
+    --gradient-primary,
+    linear-gradient(135deg, #4f46e5, #6366f1)
+  );
+
+  padding: 3px 10px;
+
+  border-radius: 999px;
+}
+
+.tier-card-sub {
+  display: block;
+
+  color: var(--text-light);
+
+  font-size: 12px;
+
+  margin: 2px 0 12px;
+}
+
+.tier-card ul {
+  margin: 0;
+
+  padding: 12px 0 0;
+
+  border-top: 1px dashed var(--border);
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  list-style: none;
+}
+
+.tier-card ul li {
+  font-size: 12.5px;
+
+  line-height: 1.6;
+
+  color: var(--text-light);
+}
+
+.tier-card ul li strong {
+  color: var(--text);
+}
+
+.tier-card-wide {
+  max-width: 100%;
+}
+
+.tier-card-value-split {
+  gap: 26px;
+}
+
+.tier-card-value-split > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+/*=====================================================
+  STRATEGI PEMETAAN SUARA (PEMILU 2029)
+=====================================================*/
+
+.strategi-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.strategi-card {
+  position: relative;
+
+  background: linear-gradient(
+    135deg,
+    rgba(79, 70, 229, 0.06),
+    rgba(6, 182, 212, 0.05)
+  );
+
+  border: 1px solid rgba(79, 70, 229, 0.12);
+
+  border-radius: 16px;
+
+  padding: 22px 20px 20px;
+}
+
+.strategi-num {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 30px;
+
+  height: 30px;
+
+  border-radius: 50%;
+
+  background: var(
+    --gradient-brand,
+    linear-gradient(90deg, #4f46e5, #ec4899, #06b6d4)
+  );
+
+  color: #fff;
+
+  font-weight: 700;
+
+  font-size: 14px;
+
+  margin-bottom: 12px;
+}
+
+.strategi-card h4 {
+  font-size: 15px;
+
+  margin-bottom: 8px;
+
+  line-height: 1.4;
+}
+
+.strategi-card p {
+  font-size: 13px;
+
+  color: var(--text-light);
+
+  line-height: 1.6;
+}
+
+.strategi-card p strong {
+  color: var(--text);
+}
+
+/*=====================================================
+  RESPONSIVE
+=====================================================*/
+
+@media (max-width: 1200px) {
+  .analisis-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .analisis-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .simulasi-body {
+    grid-template-columns: 1fr;
+  }
+
+  .potensi-summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tier-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .strategi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .analisis-container {
+    padding: 15px;
+
+    gap: 18px;
+  }
+
+  .analisis-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .btn-reset-filter {
+    justify-content: center;
+  }
+
+  .analisis-map-container {
+    height: 320px;
+  }
+
+  .simulasi-result {
+    grid-template-columns: 1fr;
+  }
+
+  .potensi-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tier-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .strategi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tier-card-value-split {
+    gap: 14px;
+  }
+}

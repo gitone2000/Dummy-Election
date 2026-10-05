@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Data Dapil | Political Intelligence 2029</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+
+    <!-- Highcharts (untuk grafik historis suara) -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <!-- Global Style -->
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+
+    <!-- Master Data -->
+    <link rel="stylesheet" href="../../assets/css/master-data/dapil.css" />
+  </head>
+
+  <body>
+    <!-- OVERLAY (mobile sidebar backdrop) -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="logo">
+        <i class="fa-solid fa-landmark"></i>
+        <span>PID 2029</span>
+
+        <button
+          class="sidebar-close-btn"
+          id="sidebarCloseBtn"
+          aria-label="Tutup menu"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <ul>
+        <li onclick="location.href = '/index.html'">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Dashboard</span>
+        </li>
+
+        <li
+          onclick="
+            location.href = '/pages/analisis-wilayah/analisis-wilayah.html'
+          "
+        >
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span>Analisis Wilayah</span>
+        </li>
+
+        <li onclick="location.href = '/pages/heatmap/heatmap.html'">
+          <i class="fa-solid fa-fire"></i>
+          <span>Heatmap</span>
+        </li>
+
+        <li
+          onclick="
+            location.href = '/pages/ai-recommendation/ai-recommendation.html'
+          "
+        >
+          <i class="fa-solid fa-brain"></i>
+          <span>AI Recommendation</span>
+        </li>
+
+        <li onclick="location.href = '/pages/kompetitor/kompetitor.html'">
+          <i class="fa-solid fa-users"></i>
+          <span>Kompetitor</span>
+        </li>
+
+        <li
+          onclick="
+            location.href = '/pages/simulasi-menang/simulasi-menang.html'
+          "
+        >
+          <i class="fa-solid fa-bullseye"></i>
+          <span>Simulasi Menang</span>
+        </li>
+
+        <li class="has-submenu active">
+          <div class="menu-toggle">
+            <div class="menu-left">
+              <i class="fa-solid fa-database"></i>
+              <span>Master Data</span>
+            </div>
+
+            <i class="fa-solid fa-chevron-right submenu-arrow"></i>
+          </div>
+
+          <ul class="submenu">
+            <li onclick="location.href = '../../pages/master-data/wilayah.html'">
+              <i class="fa-solid fa-map-location-dot"></i>
+              <span>Data Wilayah</span>
+            </li>
+
+            <li class="active" onclick="location.href = '../../pages/master-data/dapil.html'">
+              <i class="fa-solid fa-landmark"></i>
+              <span>Data Dapil</span>
+            </li>
+
+            <li onclick="location.href = '../../pages/master-data/partai.html'">
+              <i class="fa-solid fa-flag"></i>
+              <span>Data Partai</span>
+            </li>
+
+            <li onclick="location.href = '../../pages/master-data/calon.html'">
+              <i class="fa-solid fa-user"></i>
+              <span>Data Calon</span>
+            </li>
+
+            <li onclick="location.href = '../../pages/master-data/tps.html'">
+              <i class="fa-solid fa-building"></i>
+              <span>Data TPS</span>
+            </li>
+
+            <li onclick="location.href = '../../pages/master-data/import.html'">
+              <i class="fa-solid fa-file-import"></i>
+              <span>Import Data</span>
+            </li>
+          </ul>
+        </li>
+
+        <li onclick="location.href = '../../pages/relawan/relawan.html'">
+          <i class="fa-solid fa-user-group"></i>
+          <span>Relawan</span>
+        </li>
+
+        <li onclick="location.href = '../../pages/laporan/laporan.html'">
+          <i class="fa-solid fa-file-lines"></i>
+          <span>Laporan</span>
+        </li>
+
+        <li onclick="location.href = '../../pages/pengaturan/pengaturan.html'">
+          <i class="fa-solid fa-gear"></i>
+          <span>Pengaturan</span>
+        </li>
+      </ul>
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <img src="https://i.pravatar.cc/45?img=12" alt="Admin" />
+          <div class="sidebar-user-info">
+            <strong>Admin</strong>
+            <small>admin@pid2029.id</small>
+          </div>
+        </div>
+ 
+        <button class="logout-btn" onclick="location.href = '/login.html'">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Keluar</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main>
+      <!-- TOPBAR -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button
+            class="sidebar-toggle-btn"
+            id="sidebarToggleBtn"
+            aria-label="Buka menu"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <div class="topbar-title">
+            <h2>Data Dapil</h2>
+            <small>Daerah pemilihan &mdash; jembatan antara wilayah administratif dan arena kompetisi</small>
+          </div>
+        </div>
+
+        <div class="right">
+          <i class="fa-solid fa-bell"></i>
+          <i class="fa-solid fa-envelope"></i>
+          <img src="https://i.pravatar.cc/45" />
+        </div>
+      </header>
+
+      <!-- ===========================
+           LIST VIEW
+      =========================== -->
+      <section class="dapil-container" id="listView">
+        <div style="justify-content: flex-end;" class="page-header">
+          <div style="display: none;">
+            <h1>Data Dapil</h1>
+            <p>Kelola daerah pemilihan dan distribusi kursi.</p>
+          </div>
+
+          <button class="btn-primary" id="btnTambahDapil">
+            <i class="fa-solid fa-plus"></i>
+            Tambah Dapil
+          </button>
+        </div>
+
+        <!-- FILTER -->
+        <div class="dapil-widget filter-widget">
+          <div class="dapil-widget-header">
+            <h3><i class="fa-solid fa-filter"></i> Filter Dapil</h3>
+          </div>
+
+          <div class="filter-bar">
+            <div class="filter-group">
+              <label>Provinsi</label>
+              <select id="filterProvinsi">
+                <option value="">Semua Provinsi</option>
+                <option>Kalimantan Timur</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label>Jenis Pemilu</label>
+              <select id="filterJenis">
+                <option value="">Semua Jenis Pemilu</option>
+                <option>DPR RI</option>
+                <option>DPRD Provinsi</option>
+                <option>DPRD Kab/Kota</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label>Status</label>
+              <select id="filterStatus">
+                <option value="">Semua Status</option>
+                <option>Aktif</option>
+                <option>Nonaktif</option>
+              </select>
+            </div>
+
+            <button class="btn-reset-filter" id="resetFilterBtn">
+              <i class="fa-solid fa-rotate-left"></i>
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- TOOLBAR: SEARCH + COUNT -->
+        <div class="dapil-widget table-widget">
+          <div class="toolbar">
+            <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="searchDapil" placeholder="Cari dapil..." />
+            </div>
+            <span class="data-count" id="dataCount">0 Data</span>
+          </div>
+
+          <div class="table-responsive">
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Dapil</th>
+                  <th>Wilayah</th>
+                  <th>Kursi</th>
+                  <th>DPT</th>
+                  <th>TPS</th>
+                  <th>Target Suara</th>
+                  <th>Status</th>
+                  <th width="130">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="dapilTable"></tbody>
+            </table>
+          </div>
+
+          <!-- PAGINATION -->
+          <div class="pagination" id="pagination"></div>
+        </div>
+      </section>
+
+      <!-- ===========================
+           DETAIL VIEW
+      =========================== -->
+      <section class="dapil-container" id="detailView" style="display: none">
+        <button class="btn-back" id="btnBackToList">
+          <i class="fa-solid fa-arrow-left"></i> Kembali ke Daftar Dapil
+        </button>
+
+        <div class="detail-header">
+          <div>
+            <span class="detail-kode" id="detailKode"></span>
+            <h1 id="detailNama"></h1>
+            <p id="detailJenisProvinsi"></p>
+          </div>
+
+          <button class="btn-primary" id="btnEditFromDetail">
+            <i class="fa-solid fa-pen"></i> Edit Dapil
+          </button>
+        </div>
+
+        <!-- 3. STATISTIK DAPIL -->
+        <div class="detail-kpi-grid" id="detailKpiGrid"></div>
+
+        <div class="detail-grid">
+          <!-- 2. WILAYAH CAKUPAN -->
+          <div class="detail-widget">
+            <div class="detail-widget-header">
+              <h3><i class="fa-solid fa-sitemap"></i> Wilayah Cakupan</h3>
+              <span>Dapil &rarr; Kabupaten/Kota &rarr; Kecamatan &rarr; Desa</span>
+            </div>
+            <div class="wilayah-tree" id="wilayahTree"></div>
+          </div>
+
+          <!-- 6. WILAYAH PRIORITAS -->
+          <div class="detail-widget">
+            <div class="detail-widget-header">
+              <h3><i class="fa-solid fa-ranking-star"></i> Wilayah Prioritas</h3>
+              <span>Capaian terhadap potensi</span>
+            </div>
+            <div class="priority-bars" id="priorityBars"></div>
+          </div>
+        </div>
+
+        <div class="detail-grid">
+          <!-- 4. DATA SUARA HISTORIS -->
+          <div class="detail-widget">
+            <div class="detail-widget-header">
+              <h3><i class="fa-solid fa-clock-rotate-left"></i> Performa Dapil</h3>
+              <span>Historis &rarr; Target 2029</span>
+            </div>
+            <div id="historisChart" class="detail-chart-container"></div>
+            <table class="historis-table" id="historisTable"></table>
+          </div>
+
+          <!-- 5. TARGET KEMENANGAN -->
+          <div class="detail-widget">
+            <div class="detail-widget-header">
+              <h3><i class="fa-solid fa-trophy"></i> Target Kemenangan</h3>
+            </div>
+            <div class="target-kemenangan" id="targetKemenangan"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===========================
+         MODAL TAMBAH / EDIT DAPIL
+    =========================== -->
+    <div class="modal-overlay" id="dapilModalOverlay">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 id="modalTitle">Tambah Dapil</h3>
+          <button class="modal-close-btn" id="modalCloseBtn">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <form id="dapilForm">
+          <input type="hidden" id="formId" />
+
+          <div class="modal-body">
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Jenis Pemilu</label>
+                <select id="formJenis" required>
+                  <option>DPR RI</option>
+                  <option>DPRD Provinsi</option>
+                  <option>DPRD Kab/Kota</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Provinsi</label>
+                <select id="formProvinsi" required>
+                  <option>Kalimantan Timur</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Kode Dapil</label>
+                <input type="text" id="formKode" placeholder="cth. KALTIM-03" required />
+              </div>
+
+              <div class="form-group">
+                <label>Nama Dapil</label>
+                <input type="text" id="formNama" placeholder="cth. Kalimantan Timur 3" required />
+              </div>
+
+              <div class="form-group">
+                <label>Jumlah Kursi</label>
+                <input type="number" id="formKursi" min="1" value="1" required />
+              </div>
+
+              <div class="form-group">
+                <label>Target Suara 2029</label>
+                <input type="number" id="formTarget" min="0" step="500" value="50000" required />
+              </div>
+
+              <div class="form-group full">
+                <label>Wilayah (Kabupaten/Kota tercakup)</label>
+                <div class="checkbox-grid" id="wilayahCheckboxGrid"></div>
+              </div>
+
+              <div class="form-group">
+                <label>Status</label>
+                <select id="formStatus" required>
+                  <option>Aktif</option>
+                  <option>Nonaktif</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn-secondary" id="modalCancelBtn">Batal</button>
+            <button type="submit" class="btn-primary">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="../../assets/js/app.js"></script>
+    <script src="../../assets/js/master-data/dapil.js"></script>
+  </body>
+</html>

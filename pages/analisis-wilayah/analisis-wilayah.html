@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="id" data-base-depth="2">
+  <head>
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Analisis Wilayah | Political Intelligence 2029</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+
+    <!-- Leaflet -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <!-- Highcharts -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <!-- Global Style -->
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+
+    
+    <script src="../../assets/js/base-path.js"></script>
+<!-- Analisis Wilayah -->
+    <link
+      rel="stylesheet"
+      href="../../assets/css/analisis-wilayah/analisis-wilayah.css"
+    />
+  </head>
+
+  <body>
+    <!-- OVERLAY (mobile sidebar backdrop) -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="logo">
+        <i class="fa-solid fa-landmark"></i>
+
+        <span>PID 2029</span>
+
+        <button
+          class="sidebar-close-btn"
+          id="sidebarCloseBtn"
+          aria-label="Tutup menu"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <ul>
+        <li onclick="location.href = BASE_PATH + 'index.html'">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Dashboard</span>
+        </li>
+
+        <li
+          class="active"
+          onclick="
+            location.href = BASE_PATH + 'pages/analisis-wilayah/analisis-wilayah.html'
+          "
+        >
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span>Analisis Wilayah</span>
+        </li>
+
+        <li onclick="location.href = BASE_PATH + 'pages/heatmap/heatmap.html'">
+          <i class="fa-solid fa-fire"></i>
+          <span>Heatmap</span>
+        </li>
+
+        <li onclick="
+            location.href = BASE_PATH + 'pages/ai-recommendation/ai-recommendation.html'
+          ">
+          <i class="fa-solid fa-brain"></i>
+          <span>AI Recommendation</span>
+        </li>
+
+        <li onclick="location.href = BASE_PATH + 'pages/kompetitor/kompetitor.html'">
+          <i class="fa-solid fa-users"></i>
+          <span>Kompetitor</span>
+        </li>
+
+        <li onclick="location.href = BASE_PATH + 'pages/simulasi-menang/simulasi-menang.html'">
+          <i class="fa-solid fa-bullseye"></i>
+          <span>Simulasi Menang</span>
+        </li>
+
+        <li class="has-submenu">
+          <div class="menu-toggle">
+            <div class="menu-left">
+              <i class="fa-solid fa-database"></i>
+              <span>Master Data</span>
+            </div>
+
+            <i class="fa-solid fa-chevron-right submenu-arrow"></i>
+          </div>
+
+          <ul class="submenu">
+            <li
+              onclick="location.href = BASE_PATH + 'pages/master-data/wilayah.html'"
+            >
+              <i class="fa-solid fa-map-location-dot"></i>
+              <span>Data Wilayah</span>
+            </li>
+
+            <li onclick="location.href = '../../pages/master-data/dapil.html'">
+              <i class="fa-solid fa-landmark"></i>
+              <span>Data Dapil</span>
+            </li>
+
+            <li onclick="location.href = '../../pages/master-data/partai.html'">
+              <i class="fa-solid fa-flag"></i>
+              <span>Data Partai</span>
+            </li>
+
+            <li onclick="location.href = '../../pages/master-data/calon.html'">
+              <i class="fa-solid fa-user"></i>
+              <span>Data Calon</span>
+            </li>
+
+            <li onclick="location.href = '../../pages/master-data/tps.html'">
+              <i class="fa-solid fa-building"></i>
+              <span>Data TPS</span>
+            </li>
+
+            <li onclick="location.href = '../../pages/master-data/import.html'">
+              <i class="fa-solid fa-file-import"></i>
+              <span>Import Data</span>
+            </li>
+          </ul>
+        </li>
+
+        <li onclick="location.href = '../../pages/relawan/relawan.html'">
+          <i class="fa-solid fa-user-group"></i>
+          <span>Relawan</span>
+        </li>
+
+        <li onclick="location.href = '../../pages/laporan/laporan.html'">
+          <i class="fa-solid fa-file-lines"></i>
+          <span>Laporan</span>
+        </li>
+
+        <li onclick="location.href = '../../pages/pengaturan/pengaturan.html'">
+          <i class="fa-solid fa-gear"></i>
+          <span>Pengaturan</span>
+        </li>
+      </ul>
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <img src="https://i.pravatar.cc/45?img=12" alt="Admin" />
+          <div class="sidebar-user-info">
+            <strong>Admin</strong>
+            <small>admin@pid2029.id</small>
+          </div>
+        </div>
+ 
+        <button class="logout-btn" onclick="location.href = '/login.html'">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Keluar</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main>
+      <!-- TOPBAR -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button
+            class="sidebar-toggle-btn"
+            id="sidebarToggleBtn"
+            aria-label="Buka menu"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <div class="topbar-title">
+            <h2>Analisis Wilayah</h2>
+            <small
+              >Gap suara, potensi, dan prioritas pemenangan per wilayah</small
+            >
+          </div>
+        </div>
+
+        <div class="right">
+          <i class="fa-solid fa-bell"></i>
+          <i class="fa-solid fa-envelope"></i>
+          <img src="https://i.pravatar.cc/45" />
+        </div>
+      </header>
+
+      <!-- CONTENT -->
+      <section class="analisis-container">
+        <!-- PAGE HEADER -->
+        <!-- <div class="page-header">
+          <div>
+            <h1>Analisis Wilayah</h1>
+            <p>
+              "Kalau mau menang, saya harus mendapatkan berapa suara dan dari
+              wilayah mana?" — jawabannya ada di bawah ini.
+            </p>
+          </div>
+        </div> -->
+
+        <!-- FILTER BAR -->
+        <div class="filter-bar">
+          <div class="filter-group">
+            <label>Provinsi</label>
+            <select id="filterProvinsi">
+              <option>Kalimantan Timur</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label>Kabupaten/Kota</label>
+            <select id="filterKabupaten">
+              <option value="">Semua Kabupaten/Kota</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label>Kecamatan</label>
+            <select id="filterKecamatan">
+              <option value="">Semua Kecamatan</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label>Desa/Kelurahan</label>
+            <select id="filterDesa" disabled>
+              <option value="">Semua Desa</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label>TPS</label>
+            <select id="filterTps" disabled>
+              <option value="">Semua TPS</option>
+            </select>
+          </div>
+
+          <button class="btn-reset-filter" id="resetFilterBtn">
+            <i class="fa-solid fa-rotate-left"></i>
+            Reset
+          </button>
+        </div>
+
+        <!-- MODE TABS -->
+        <div class="mode-tabs" id="modeTabs">
+          <button class="mode-tab active" data-mode="historis">
+            <i class="fa-solid fa-clock-rotate-left"></i> Historis
+          </button>
+          <button class="mode-tab" data-mode="potensi">
+            <i class="fa-solid fa-seedling"></i> Potensi
+          </button>
+          <button class="mode-tab" data-mode="target">
+            <i class="fa-solid fa-bullseye"></i> Target
+          </button>
+          <button class="mode-tab" data-mode="kompetitor">
+            <i class="fa-solid fa-users"></i> Kompetitor
+          </button>
+          <button class="mode-tab" data-mode="simulasi">
+            <i class="fa-solid fa-sliders"></i> Simulasi
+          </button>
+        </div>
+
+        <!-- KPI ROW -->
+        <div class="analisis-kpi-grid" id="analisisKpiGrid"></div>
+
+        <!-- ROW: MAP + RANKING -->
+        <div class="analisis-grid">
+          <div class="analisis-widget map-widget">
+            <div class="analisis-widget-header">
+              <h3>
+                <i class="fa-solid fa-map-location-dot"></i> Peta Interaktif
+              </h3>
+              <span>Klik wilayah untuk drill-down</span>
+            </div>
+            <div id="analisisMap" class="analisis-map-container"></div>
+          </div>
+
+          <div class="analisis-widget ranking-widget">
+            <div class="analisis-widget-header">
+              <h3><i class="fa-solid fa-ranking-star"></i> Ranking Wilayah</h3>
+              <span id="rankingScopeLabel">Semua Kabupaten/Kota</span>
+            </div>
+            <ol class="ranking-list" id="rankingList"></ol>
+          </div>
+        </div>
+
+        <!-- ROW: TREND -->
+        <div class="analisis-widget trend-widget">
+          <div class="analisis-widget-header">
+            <h3><i class="fa-solid fa-chart-line"></i> Tren Perolehan Suara</h3>
+            <span>Historis &rarr; Target 2029</span>
+          </div>
+          <div id="trendChart" class="analisis-chart-container"></div>
+        </div>
+
+        <!-- ROW: POTENSI + GAP -->
+        <div class="analisis-grid">
+          <div class="analisis-widget">
+            <div class="analisis-widget-header">
+              <h3><i class="fa-solid fa-seedling"></i> Potensi Wilayah</h3>
+              <span>% capaian terhadap target</span>
+            </div>
+            <div id="potensiChart" class="analisis-chart-container"></div>
+          </div>
+
+          <div class="analisis-widget">
+            <div class="analisis-widget-header">
+              <h3><i class="fa-solid fa-bullseye"></i> Gap Menuju Target</h3>
+              <span>Kekurangan / kelebihan suara</span>
+            </div>
+            <div id="gapChart" class="analisis-chart-container"></div>
+          </div>
+        </div>
+
+        <!-- SIMULASI PANEL -->
+        <div class="analisis-widget simulasi-widget" id="simulasiPanel">
+          <div class="analisis-widget-header">
+            <h3><i class="fa-solid fa-sliders"></i> Simulasi Peluang Menang</h3>
+            <span>"Kalau target naik, bagaimana gap-nya berubah?"</span>
+          </div>
+
+          <div class="simulasi-body">
+            <div class="simulasi-control">
+              <label for="simulasiKecamatan">Pilih Kecamatan</label>
+              <select id="simulasiKecamatan"></select>
+
+              <label for="simulasiSlider">
+                Tambahan Suara: <strong id="simulasiValueLabel">0</strong>
+              </label>
+              <input
+                type="range"
+                id="simulasiSlider"
+                min="0"
+                max="20000"
+                step="500"
+                value="0"
+              />
+            </div>
+
+            <div class="simulasi-result" id="simulasiResult"></div>
+          </div>
+        </div>
+
+        <!-- KOMPETITOR PLACEHOLDER -->
+        <div class="analisis-widget kompetitor-widget" id="kompetitorPanel">
+          <div class="analisis-widget-header">
+            <h3><i class="fa-solid fa-users"></i> Analisis Kompetitor</h3>
+          </div>
+          <div class="empty-state">
+            <i class="fa-solid fa-circle-info"></i>
+            <p>
+              Data kompetitor belum tersedia. Sambungkan modul
+              <strong>Kompetitor</strong> untuk mengaktifkan analisis
+              head-to-head di sini.
+            </p>
+          </div>
+        </div>
+
+        <!-- REKOMENDASI -->
+        <div class="analisis-widget rekomendasi-widget">
+          <div class="analisis-widget-header">
+            <h3><i class="fa-solid fa-lightbulb"></i> Rekomendasi</h3>
+            <span>Wilayah yang harus dikejar</span>
+          </div>
+          <div class="rekomendasi-list" id="rekomendasiList"></div>
+        </div>
+
+        <!-- TPS PRIORITAS -->
+        <div class="analisis-widget">
+          <div class="analisis-widget-header">
+            <h3><i class="fa-solid fa-building"></i> TPS Prioritas</h3>
+            <span>TPS dengan gap tertinggi pada wilayah terpilih</span>
+          </div>
+          <div class="table-responsive">
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th>TPS</th>
+                  <th>Kecamatan</th>
+                  <th>DPT</th>
+                  <th>Historis</th>
+                  <th>Target</th>
+                  <th>Gap</th>
+                  <th>Prioritas</th>
+                </tr>
+              </thead>
+              <tbody id="tpsPrioritasTable"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ================================================
+             POTENSI SUARA BERDASARKAN DATA HISTORIS 2019 & 2024
+             (data real, klaster wilayah per kabupaten/kota)
+        ================================================= -->
+        <div class="analisis-widget potensi-historis-widget">
+          <div class="analisis-widget-header">
+            <h3>
+              <i class="fa-solid fa-chart-simple"></i> Pemetaan Potensi Suara
+              Berdasarkan Data Historis 2019 &amp; 2024
+            </h3>
+            <span
+              >Dapil Kalimantan Timur &bull; DPT, karakteristik demografi
+              &amp; proyeksi pertumbuhan pemilih menuju 2029</span
+            >
+          </div>
+
+          <p class="scope-note">
+            <i class="fa-solid fa-circle-info"></i>
+            Bagian ini memakai <strong>data real DPT Pemilu Dapil Kalimantan
+            Timur</strong>, dianalisis berdasarkan karakteristik demografi dan
+            proyeksi pertumbuhan pemilih menuju Pemilu 2029.
+          </p>
+
+          <!-- KPI RINGKASAN -->
+          <div class="potensi-summary-grid">
+            <div class="potensi-summary-card">
+              <div class="potensi-summary-icon icon-blue">
+                <i class="fa-solid fa-users"></i>
+              </div>
+              <div class="potensi-summary-text">
+                <span>Total Pemilih</span>
+                <h3>&plusmn; 2,68 Juta</h3>
+                <small>100% DPT Dapil Kaltim</small>
+              </div>
+            </div>
+
+            <div class="potensi-summary-card">
+              <div class="potensi-summary-icon icon-green">
+                <i class="fa-solid fa-city"></i>
+              </div>
+              <div class="potensi-summary-text">
+                <span>Jumlah Kab/Kota</span>
+                <h3>7 Kab &amp; 2 Kota</h3>
+                <small>cakupan Dapil Kalimantan Timur</small>
+              </div>
+            </div>
+
+            <div class="potensi-summary-card">
+              <div class="potensi-summary-icon icon-purple">
+                <i class="fa-solid fa-arrow-trend-up"></i>
+              </div>
+              <div class="potensi-summary-text">
+                <span>Proyeksi Pertumbuhan</span>
+                <h3>8% &ndash; 12%</h3>
+                <small>pemilih 2024 menuju 2029</small>
+              </div>
+            </div>
+
+            <div class="potensi-summary-card">
+              <div class="potensi-summary-icon icon-orange">
+                <i class="fa-solid fa-landmark-dome"></i>
+              </div>
+              <div class="potensi-summary-text">
+                <span>Alokasi Kursi DPR RI</span>
+                <h3>8 Kursi</h3>
+                <small>Dapil Kalimantan Timur</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- TIER 1 -->
+          <div class="tier-section">
+            <div class="tier-section-header tier-1">
+              <span class="tier-badge">Tier 1</span>
+              <div>
+                <h4>Klaster &ldquo;Tiga Raksasa&rdquo; (Lumbung Suara Utama)</h4>
+                <p>
+                  Menguasai hampir 60% total suara di Kaltim (&plusmn; 1,65
+                  juta pemilih). Wilayah ini adalah segmen wajib
+                  <em>(must-win area)</em>.
+                </p>
+              </div>
+            </div>
+
+            <div class="tier-grid tier-grid-3">
+              <div class="tier-card">
+                <div class="tier-card-top">
+                  <span class="tier-rank">1</span>
+                  <div class="tier-card-icon icon-blue">
+                    <i class="fa-solid fa-city"></i>
+                  </div>
+                </div>
+                <h5>Kota Samarinda</h5>
+                <div class="tier-card-value">
+                  <strong>&plusmn; 604 Ribu</strong>
+                  <span class="tier-percent">21,7%</span>
+                </div>
+                <small class="tier-card-sub">pemilih</small>
+                <ul>
+                  <li>
+                    <strong>Karakteristik:</strong> Pusat pemerintahan,
+                    urban, heterogen, tingkat pendidikan tinggi.
+                  </li>
+                  <li>
+                    <strong>Potensi Politik:</strong> Dinamis, Milenial, Gen
+                    Z, ASN, dan kelompok terpelajar dominan. Efektif digarap
+                    dengan isu kebijakan publik, ekonomi perkotaan, dan
+                    kampanye digital/komunitas.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="tier-card">
+                <div class="tier-card-top">
+                  <span class="tier-rank">2</span>
+                  <div class="tier-card-icon icon-amber">
+                    <i class="fa-solid fa-tractor"></i>
+                  </div>
+                </div>
+                <h5>Kabupaten Kutai Kartanegara (Kukar)</h5>
+                <div class="tier-card-value">
+                  <strong>&plusmn; 543 Ribu</strong>
+                  <span class="tier-percent">19,5%</span>
+                </div>
+                <small class="tier-card-sub">pemilih</small>
+                <ul>
+                  <li>
+                    <strong>Karakteristik:</strong> Wilayah terluas, basis
+                    pedesaan, pesisir, tambang dan perkebunan.
+                  </li>
+                  <li>
+                    <strong>Potensi Politik:</strong> Loyalitas pemilih
+                    berbasis figur lokal, kekerabatan, dan paguyuban kuat.
+                    Kunci garapan: tokoh masyarakat, kelompok
+                    Tani/Nelayan, buruh tambang.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="tier-card">
+                <div class="tier-card-top">
+                  <span class="tier-rank">3</span>
+                  <div class="tier-card-icon icon-teal">
+                    <i class="fa-solid fa-oil-well"></i>
+                  </div>
+                </div>
+                <h5>Kota Balikpapan</h5>
+                <div class="tier-card-value">
+                  <strong>&plusmn; 509 Ribu</strong>
+                  <span class="tier-percent">18,3%</span>
+                </div>
+                <small class="tier-card-sub">pemilih</small>
+                <ul>
+                  <li>
+                    <strong>Karakteristik:</strong> Kota jasa, industri
+                    migas, pintu gerbang utama IKN, serta pusat bisnis.
+                  </li>
+                  <li>
+                    <strong>Potensi Politik:</strong> Pemilih rasional,
+                    swasta/pekerja industri, dan pendatang (migran). Karakter
+                    pilihan cenderung pragmatis dan realistis.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- TIER 2 -->
+          <div class="tier-section">
+            <div class="tier-section-header tier-2">
+              <span class="tier-badge">Tier 2</span>
+              <div>
+                <h4>Klaster Sabuk Pertumbuhan &amp; Industri</h4>
+                <p>
+                  Menyumbang sekitar 25% total suara (&sim;700 ribu
+                  pemilih). Menjadi penentu kemenangan untuk merebut kursi
+                  ke-6 s.d. ke-8.
+                </p>
+              </div>
+            </div>
+
+            <div class="tier-grid tier-grid-3">
+              <div class="tier-card">
+                <div class="tier-card-top">
+                  <span class="tier-rank">1</span>
+                  <div class="tier-card-icon icon-rose">
+                    <i class="fa-solid fa-tree"></i>
+                  </div>
+                </div>
+                <h5>Kabupaten Kutai Timur</h5>
+                <div class="tier-card-value">
+                  <strong>&plusmn; 300 Ribu</strong>
+                  <span class="tier-percent">10,8%</span>
+                </div>
+                <small class="tier-card-sub">pemilih</small>
+                <ul>
+                  <li>
+                    <strong>Karakteristik:</strong> Wilayah perkebunan,
+                    pertambangan, serta diwarnai komunitas pekerja migran.
+                  </li>
+                  <li>
+                    <strong>Potensi Politik:</strong> Pertumbuhan pemilih
+                    tinggi dan memiliki keheterogenan basis wilayah.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="tier-card">
+                <div class="tier-card-top">
+                  <span class="tier-rank">2</span>
+                  <div class="tier-card-icon icon-cyan">
+                    <i class="fa-solid fa-helmet-safety"></i>
+                  </div>
+                </div>
+                <h5>Kab. Paser &amp; Penajam Paser Utara</h5>
+                <div class="tier-card-value">
+                  <strong>&plusmn; 211 Ribu &amp; &plusmn; 134 Ribu</strong>
+                </div>
+                <small class="tier-card-sub">pemilih</small>
+                <ul>
+                  <li>
+                    <strong>Karakteristik:</strong> Sektor pertumbuhan
+                    tercepat (zona efek IKN).
+                  </li>
+                  <li>
+                    <strong>Potensi Politik:</strong> Pemilih berasal dari
+                    migrasi pekerja, ASN, dan berpotensi terjadi lonjakan
+                    jumlah pemilih.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="tier-card">
+                <div class="tier-card-top">
+                  <span class="tier-rank">3</span>
+                  <div class="tier-card-icon icon-indigo">
+                    <i class="fa-solid fa-industry"></i>
+                  </div>
+                </div>
+                <h5>Kabupaten Berau &amp; Kota Bontang</h5>
+                <div class="tier-card-value">
+                  <strong>&plusmn; 191 Ribu &amp; &plusmn; 191 Ribu</strong>
+                </div>
+                <small class="tier-card-sub">pemilih</small>
+                <ul>
+                  <li>
+                    <strong>Karakteristik:</strong> Kota industri berat/
+                    petrokimia, pertambangan, dan pariwisata.
+                  </li>
+                  <li>
+                    <strong>Potensi Politik:</strong> Pemilih rasional,
+                    swasta/pekerja industri, dan pendatang (migran).
+                    Karakter pilihan cenderung pragmatis dan realistis.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- TIER 3 -->
+          <div class="tier-section">
+            <div class="tier-section-header tier-3">
+              <span class="tier-badge">Tier 3</span>
+              <div>
+                <h4>Klaster Pedalaman dan Pesisir Khusus</h4>
+                <p>
+                  Menyumbang sekitar 10% total suara (&plusmn; 280 ribu
+                  pemilih). Sering menjadi suara penentu
+                  <em>(game changer)</em> di detik akhir.
+                </p>
+              </div>
+            </div>
+
+            <div class="tier-grid tier-grid-1">
+              <div class="tier-card tier-card-wide">
+                <div class="tier-card-top">
+                  <span class="tier-rank">1</span>
+                  <div class="tier-card-icon icon-slate">
+                    <i class="fa-solid fa-water"></i>
+                  </div>
+                </div>
+                <h5>Kabupaten Kutai Barat &amp; Kabupaten Mahakam Ulu</h5>
+                <div class="tier-card-value tier-card-value-split">
+                  <div>
+                    <strong>&plusmn; 125.000</strong>
+                    <small class="tier-card-sub">pemilih (Kubar)</small>
+                  </div>
+                  <div>
+                    <strong>&plusmn; 27.000</strong>
+                    <span class="tier-percent">1,0%</span>
+                    <small class="tier-card-sub">pemilih (Mahulu)</small>
+                  </div>
+                </div>
+                <ul>
+                  <li>
+                    <strong>Karakteristik:</strong> Basis pemilih
+                    adat/komunitas lokal yang sangat kompak.
+                  </li>
+                  <li>
+                    <strong>Potensi Politik:</strong> Penetrasi figur lokal
+                    atau kerja sama dengan tokoh adat/tokoh agama sangat
+                    efektif, karena pola memilihnya memiliki ketaatan
+                    komunal yang tinggi <em>(solidarity voting)</em>.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STRATEGI PEMETAAN SUARA (PEMILU 2029) -->
+        <div class="analisis-widget strategi-2029-widget">
+          <div class="analisis-widget-header">
+            <h3>
+              <i class="fa-solid fa-chess"></i> Strategi Pemetaan Suara
+              (Pemilu 2029)
+            </h3>
+            <span>Rekomendasi berbasis klasterisasi wilayah di atas</span>
+          </div>
+
+          <div class="strategi-grid">
+            <div class="strategi-card">
+              <span class="strategi-num">1</span>
+              <h4>
+                Strategi Poros Utama (Samarinda + Kukar + Balikpapan)
+              </h4>
+              <p>
+                <strong>Strategi:</strong> Partai politik wajib mendudukkan
+                minimal 1&ndash;2 caleg populer yang berasal dari/berbasis di
+                Samarinda, Kukar, dan Balikpapan untuk menjaga baseline
+                suara partai agar melampaui 100.000 suara.
+              </p>
+            </div>
+
+            <div class="strategi-card">
+              <span class="strategi-num">2</span>
+              <h4>Kombinasi Figur Urban &amp; Daerah</h4>
+              <p>
+                <strong>Strategi:</strong> Memadukan caleg tipe figur
+                publik/populer di kota (Samarinda/Balikpapan) dengan caleg
+                tokoh lokal/akar rumput di wilayah Kutim/Kukar/PPU/Paser.
+              </p>
+            </div>
+
+            <div class="strategi-card">
+              <span class="strategi-num">3</span>
+              <h4>Fokus Khusus Zona IKN (PPU &amp; Paser)</h4>
+              <p>
+                <strong>Strategi:</strong> Menjadikan PPU dan Paser sebagai
+                target ekspansi baru di 2029 karena masuknya demografi
+                pemilih baru (pekerja &amp; ASN) yang belum memiliki
+                loyalitas politik terikat pada partai tertentu.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script src="../../assets/js/analisis-wilayah/analisis-wilayah.js"></script>
+    <script src="../../assets/js/app.js"></script>
+  </body>
+</html>

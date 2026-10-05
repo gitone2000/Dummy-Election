@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Relawan | Political Intelligence 2029</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+
+    <!-- Global Style -->
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+
+    <!-- Relawan -->
+    <link rel="stylesheet" href="../../assets/css/relawan/relawan.css" />
+  </head>
+
+  <body>
+    <!-- OVERLAY (mobile sidebar backdrop) -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="logo">
+        <i class="fa-solid fa-landmark"></i>
+        <span>PID 2029</span>
+
+        <button
+          class="sidebar-close-btn"
+          id="sidebarCloseBtn"
+          aria-label="Tutup menu"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <ul>
+        <li onclick="location.href = '/index.html'">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Dashboard</span>
+        </li>
+
+        <li
+          onclick="
+            location.href = '/pages/analisis-wilayah/analisis-wilayah.html'
+          "
+        >
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span>Analisis Wilayah</span>
+        </li>
+
+        <li onclick="location.href = '/pages/heatmap/heatmap.html'">
+          <i class="fa-solid fa-fire"></i>
+          <span>Heatmap</span>
+        </li>
+
+        <li
+          onclick="
+            location.href = '/pages/ai-recommendation/ai-recommendation.html'
+          "
+        >
+          <i class="fa-solid fa-brain"></i>
+          <span>AI Recommendation</span>
+        </li>
+
+        <li onclick="location.href = '/pages/kompetitor/kompetitor.html'">
+          <i class="fa-solid fa-users"></i>
+          <span>Kompetitor</span>
+        </li>
+
+        <li
+          onclick="
+            location.href = '/pages/simulasi-menang/simulasi-menang.html'
+          "
+        >
+          <i class="fa-solid fa-bullseye"></i>
+          <span>Simulasi Menang</span>
+        </li>
+
+        <li class="has-submenu">
+          <div class="menu-toggle">
+            <div class="menu-left">
+              <i class="fa-solid fa-database"></i>
+              <span>Master Data</span>
+            </div>
+
+            <i class="fa-solid fa-chevron-right submenu-arrow"></i>
+          </div>
+
+          <ul class="submenu">
+            <li onclick="location.href = '../../pages/master-data/wilayah.html'">
+              <i class="fa-solid fa-map-location-dot"></i>
+              <span>Data Wilayah</span>
+            </li>
+
+            <li onclick="location.href = '../../pages/master-data/dapil.html'">
+              <i class="fa-solid fa-landmark"></i>
+              <span>Data Dapil</span>
+            </li>
+
+            <li onclick="location.href = '../../pages/master-data/partai.html'">
+              <i class="fa-solid fa-flag"></i>
+              <span>Data Partai</span>
+            </li>
+
+            <li onclick="location.href = '../../pages/master-data/calon.html'">
+              <i class="fa-solid fa-user"></i>
+              <span>Data Calon</span>
+            </li>
+
+            <li onclick="location.href = '../../pages/master-data/tps.html'">
+              <i class="fa-solid fa-building"></i>
+              <span>Data TPS</span>
+            </li>
+
+            <li onclick="location.href = '../../pages/master-data/import.html'">
+              <i class="fa-solid fa-file-import"></i>
+              <span>Import Data</span>
+            </li>
+          </ul>
+        </li>
+
+        <li class="active" onclick="location.href = '../../pages/relawan/relawan.html'">
+          <i class="fa-solid fa-user-group"></i>
+          <span>Relawan</span>
+        </li>
+
+        <li onclick="location.href = '../../pages/laporan/laporan.html'">
+          <i class="fa-solid fa-file-lines"></i>
+          <span>Laporan</span>
+        </li>
+
+        <li onclick="location.href = '../../pages/pengaturan/pengaturan.html'">
+          <i class="fa-solid fa-gear"></i>
+          <span>Pengaturan</span>
+        </li>
+      </ul>
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <img src="https://i.pravatar.cc/45?img=12" alt="Admin" />
+          <div class="sidebar-user-info">
+            <strong>Admin</strong>
+            <small>admin@pid2029.id</small>
+          </div>
+        </div>
+ 
+        <button class="logout-btn" onclick="location.href = '/login.html'">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Keluar</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main>
+      <!-- TOPBAR -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button
+            class="sidebar-toggle-btn"
+            id="sidebarToggleBtn"
+            aria-label="Buka menu"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <div class="topbar-title">
+            <h2>Relawan</h2>
+            <small>Modul operasional lapangan &mdash; wilayah, TPS, aktivitas, dan performa relawan</small>
+          </div>
+        </div>
+
+        <div class="right">
+          <i class="fa-solid fa-bell"></i>
+          <i class="fa-solid fa-envelope"></i>
+          <img src="https://i.pravatar.cc/45" />
+        </div>
+      </header>
+
+      <!-- ===========================
+           LIST VIEW
+      =========================== -->
+      <section class="relawan-container" id="listView">
+        <div style="justify-content: flex-end;" class="page-header">
+          <!-- <div>
+            <h1>Relawan</h1>
+            <p>Pantau siapa yang bekerja, wilayah & TPS yang ditangani, aktivitas, dan performanya.</p>
+          </div> -->
+
+          <button class="btn-primary" id="btnTambahRelawan">
+            <i class="fa-solid fa-plus"></i>
+            Tambah Relawan
+          </button>
+        </div>
+
+        <!-- 1. OVERVIEW -->
+        <div class="kpi-grid" id="kpiSummaryGrid"></div>
+
+        <div class="quick-stats-row" id="quickStatsRow"></div>
+
+        <!-- 2. FILTER -->
+        <div class="relawan-widget filter-widget">
+          <div class="relawan-widget-header">
+            <h3><i class="fa-solid fa-filter"></i> Filter Relawan</h3>
+          </div>
+
+          <div class="filter-bar">
+            <div class="filter-group">
+              <label>Kabupaten</label>
+              <select id="filterKabupaten">
+                <option value="">Semua Kabupaten</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label>Kecamatan</label>
+              <select id="filterKecamatan">
+                <option value="">Semua Kecamatan</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label>Koordinator</label>
+              <select id="filterKoordinator">
+                <option value="">Semua Koordinator</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label>Status</label>
+              <select id="filterStatus">
+                <option value="">Semua Status</option>
+                <option>Aktif</option>
+                <option>Nonaktif</option>
+              </select>
+            </div>
+
+            <button class="btn-reset-filter" id="resetFilterBtn">
+              <i class="fa-solid fa-rotate-left"></i>
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- DATA RELAWAN -->
+        <div class="relawan-widget table-widget">
+          <div class="toolbar">
+            <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="searchRelawan" placeholder="Cari nama relawan..." />
+            </div>
+            <span class="data-count" id="dataCount">0 Data</span>
+          </div>
+
+          <div class="table-responsive">
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nama</th>
+                  <th>Wilayah</th>
+                  <th>TPS</th>
+                  <th>Koordinator</th>
+                  <th>Status</th>
+                  <th>Aktivitas</th>
+                  <th width="130">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="relawanTable"></tbody>
+            </table>
+          </div>
+
+          <div class="pagination" id="pagination"></div>
+        </div>
+
+        <!-- 3. STRUKTUR ORGANISASI + 4/5. COVERAGE TPS -->
+        <div class="relawan-grid">
+          <div class="relawan-widget">
+            <div class="relawan-widget-header">
+              <h3><i class="fa-solid fa-sitemap"></i> Struktur Organisasi</h3>
+              <span>Koordinator &rarr; Kecamatan &rarr; Desa &rarr; TPS</span>
+            </div>
+            <div class="org-tree" id="orgTree"></div>
+          </div>
+
+          <div class="relawan-widget">
+            <div class="relawan-widget-header">
+              <h3><i class="fa-solid fa-map-pin"></i> Coverage TPS</h3>
+              <span id="coverageSubtitle"></span>
+            </div>
+            <div class="tps-coverage-grid" id="tpsCoverageGrid"></div>
+            <div class="tps-legend">
+              <div class="tps-legend-item"><span class="dot tercover"></span> Tercover</div>
+              <div class="tps-legend-item"><span class="dot sebagian"></span> Sebagian</div>
+              <div class="tps-legend-item"><span class="dot belum"></span> Belum Tercover</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. TARGET VS REALISASI -->
+        <div class="relawan-widget">
+          <div class="relawan-widget-header">
+            <h3><i class="fa-solid fa-bullseye"></i> Target vs Realisasi Aktivitas</h3>
+            <span>Minggu ini</span>
+          </div>
+
+          <div class="target-hero">
+            <div class="target-numbers">
+              Realisasi <strong id="targetRealisasi">0</strong> dari
+              <strong id="targetAngka">0</strong> target
+            </div>
+            <div class="target-percent" id="targetPercent">0%</div>
+          </div>
+          <div class="target-hero-bar">
+            <div class="target-hero-fill" id="targetHeroFill"></div>
+          </div>
+
+          <div class="priority-bars" id="targetPerWilayah"></div>
+        </div>
+      </section>
+
+      <!-- ===========================
+           DETAIL VIEW
+      =========================== -->
+      <section class="relawan-container" id="detailView" style="display: none">
+        <button class="btn-back" id="btnBackToList">
+          <i class="fa-solid fa-arrow-left"></i> Kembali ke Daftar Relawan
+        </button>
+
+        <div class="detail-header">
+          <div class="detail-header-left">
+            <div class="relawan-avatar-lg" id="detailAvatar"></div>
+            <div>
+              <span class="detail-jabatan" id="detailJabatan"></span>
+              <h1 id="detailNama"></h1>
+              <p id="detailWilayahInfo"></p>
+            </div>
+          </div>
+
+          <button class="btn-primary" id="btnEditFromDetail">
+            <i class="fa-solid fa-pen"></i> Edit Relawan
+          </button>
+        </div>
+
+        <!-- KPI DETAIL -->
+        <div class="kpi-grid" id="detailKpiGrid"></div>
+
+        <div class="detail-grid">
+          <!-- PROFIL -->
+          <div class="detail-widget">
+            <div class="detail-widget-header">
+              <h3><i class="fa-solid fa-id-card"></i> Profil Relawan</h3>
+            </div>
+            <div class="detail-info-list" id="detailInfoList"></div>
+          </div>
+
+          <!-- PERFORMANCE SCORE -->
+          <div class="detail-widget">
+            <div class="detail-widget-header">
+              <h3><i class="fa-solid fa-chart-simple"></i> Performance Score</h3>
+            </div>
+            <div class="score-hero">
+              <div class="score-number"><span id="scoreTotal">0</span><small>/100</small></div>
+              <div class="score-hero-bar"><div class="score-hero-fill" id="scoreHeroFill"></div></div>
+              <span class="score-hero-tag" id="scoreTag"></span>
+            </div>
+            <div class="score-breakdown" id="scoreBreakdown"></div>
+          </div>
+        </div>
+
+        <div class="detail-grid">
+          <!-- TPS YANG DITANGANI -->
+          <div class="detail-widget">
+            <div class="detail-widget-header">
+              <h3><i class="fa-solid fa-map-pin"></i> TPS yang Ditangani</h3>
+            </div>
+            <div class="tps-coverage-grid" id="detailTpsGrid"></div>
+            <div class="tps-legend">
+              <div class="tps-legend-item"><span class="dot tercover"></span> Tercover</div>
+              <div class="tps-legend-item"><span class="dot sebagian"></span> Sebagian</div>
+              <div class="tps-legend-item"><span class="dot belum"></span> Belum Tercover</div>
+            </div>
+          </div>
+
+          <!-- AKTIVITAS -->
+          <div class="detail-widget">
+            <div class="detail-widget-header">
+              <h3><i class="fa-solid fa-list-check"></i> Aktivitas Terbaru</h3>
+            </div>
+            <div class="activity-timeline" id="activityTimeline"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===========================
+         MODAL TAMBAH / EDIT RELAWAN
+    =========================== -->
+    <div class="modal-overlay" id="relawanModalOverlay">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 id="modalTitle">Tambah Relawan</h3>
+          <button class="modal-close-btn" id="modalCloseBtn">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <form id="relawanForm">
+          <input type="hidden" id="formId" />
+
+          <div class="modal-body">
+            <div class="form-section-title">Identitas</div>
+            <div class="form-grid">
+              <div class="form-group full">
+                <label>Nama Lengkap</label>
+                <input type="text" id="formNama" placeholder="cth. Ahmad Wijaya" required />
+              </div>
+
+              <div class="form-group full">
+                <label>Nomor Kontak</label>
+                <input type="text" id="formKontak" placeholder="cth. 0812xxxxxxx" required />
+              </div>
+            </div>
+
+            <div class="form-section-title">Wilayah &amp; Struktur</div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Kabupaten/Kota</label>
+                <input type="text" id="formKabupaten" placeholder="cth. Samarinda" required />
+              </div>
+
+              <div class="form-group">
+                <label>Kecamatan</label>
+                <input type="text" id="formKecamatan" placeholder="cth. Samarinda Utara" required />
+              </div>
+
+              <div class="form-group">
+                <label>Desa/Kelurahan</label>
+                <input type="text" id="formDesa" placeholder="cth. Sempaja" required />
+              </div>
+
+              <div class="form-group">
+                <label>Jabatan</label>
+                <select id="formJabatan" required>
+                  <option>Koordinator Wilayah</option>
+                  <option>Koordinator Kabupaten</option>
+                  <option>Koordinator Kecamatan</option>
+                  <option selected>Relawan Desa</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Koordinator</label>
+                <input type="text" id="formKoordinator" placeholder="cth. Budi" required />
+              </div>
+
+              <div class="form-group">
+                <label>Status</label>
+                <select id="formStatus" required>
+                  <option>Aktif</option>
+                  <option>Nonaktif</option>
+                </select>
+              </div>
+
+              <div class="form-group full">
+                <label>TPS yang Ditangani</label>
+                <div class="checkbox-grid" id="tpsCheckboxGrid"></div>
+              </div>
+            </div>
+
+            <div class="form-section-title">Lainnya</div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Tanggal Bergabung</label>
+                <input type="date" id="formTanggalBergabung" required />
+              </div>
+
+              <div class="form-group full">
+                <label>Catatan</label>
+                <textarea id="formCatatan" placeholder="Catatan tambahan tentang relawan ini..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn-secondary" id="modalCancelBtn">Batal</button>
+            <button type="submit" class="btn-primary">Simpan Relawan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="../../assets/js/app.js"></script>
+    <script src="../../assets/js/relawan/relawan.js"></script>
+  </body>
+</html>

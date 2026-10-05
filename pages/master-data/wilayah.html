@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Data Wilayah | Political Intelligence 2029</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+
+    <!-- Global Style -->
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+
+    <!-- Data Wilayah -->
+    <link rel="stylesheet" href="../../assets/css/master-data/wilayah.css" />
+  </head>
+
+  <body>
+    <!-- OVERLAY (mobile sidebar backdrop) -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="logo">
+        <i class="fa-solid fa-landmark"></i>
+
+        <span>PID 2029</span>
+
+        <button
+          class="sidebar-close-btn"
+          id="sidebarCloseBtn"
+          aria-label="Tutup menu"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <ul>
+        <li onclick="location.href = '/index.html'">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Dashboard</span>
+        </li>
+
+        <li
+          onclick="
+            location.href = '/pages/analisis-wilayah/analisis-wilayah.html'
+          "
+        >
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span>Analisis Wilayah</span>
+        </li>
+
+        <li onclick="location.href = '/pages/heatmap/heatmap.html'">
+          <i class="fa-solid fa-fire"></i>
+          <span>Heatmap</span>
+        </li>
+
+        <li
+          onclick="
+            location.href = '/pages/ai-recommendation/ai-recommendation.html'
+          "
+        >
+          <i class="fa-solid fa-brain"></i>
+          <span>AI Recommendation</span>
+        </li>
+
+        <li onclick="location.href = '/pages/kompetitor/kompetitor.html'">
+          <i class="fa-solid fa-users"></i>
+          <span>Kompetitor</span>
+        </li>
+
+        <li
+          onclick="
+            location.href = '/pages/simulasi-menang/simulasi-menang.html'
+          "
+        >
+          <i class="fa-solid fa-bullseye"></i>
+          <span>Simulasi Menang</span>
+        </li>
+
+        <li class="has-submenu active">
+          <div class="menu-toggle">
+            <div class="menu-left">
+              <i class="fa-solid fa-database"></i>
+              <span>Master Data</span>
+            </div>
+
+            <i class="fa-solid fa-chevron-right submenu-arrow"></i>
+          </div>
+
+          <ul class="submenu">
+            <li
+              class="active"
+              onclick="location.href = '../../pages/master-data/wilayah.html'"
+            >
+              <i class="fa-solid fa-map-location-dot"></i>
+              <span>Data Wilayah</span>
+            </li>
+
+            <li onclick="location.href = '../../pages/master-data/dapil.html'">
+              <i class="fa-solid fa-landmark"></i>
+              <span>Data Dapil</span>
+            </li>
+
+            <li onclick="location.href = '../../pages/master-data/partai.html'">
+              <i class="fa-solid fa-flag"></i>
+              <span>Data Partai</span>
+            </li>
+
+            <li onclick="location.href = '../../pages/master-data/calon.html'">
+              <i class="fa-solid fa-user"></i>
+              <span>Data Calon</span>
+            </li>
+
+            <li onclick="location.href = '../../pages/master-data/tps.html'">
+              <i class="fa-solid fa-building"></i>
+              <span>Data TPS</span>
+            </li>
+
+            <li onclick="location.href = '../../pages/master-data/import.html'">
+              <i class="fa-solid fa-file-import"></i>
+              <span>Import Data</span>
+            </li>
+          </ul>
+        </li>
+
+        <li onclick="location.href = '../../pages/relawan/relawan.html'">
+          <i class="fa-solid fa-user-group"></i>
+          <span>Relawan</span>
+        </li>
+
+        <li onclick="location.href = '../../pages/laporan/laporan.html'">
+          <i class="fa-solid fa-file-lines"></i>
+          <span>Laporan</span>
+        </li>
+
+        <li onclick="location.href = '../../pages/pengaturan/pengaturan.html'">
+          <i class="fa-solid fa-gear"></i>
+          <span>Pengaturan</span>
+        </li>
+      </ul>
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <img src="https://i.pravatar.cc/45?img=12" alt="Admin" />
+          <div class="sidebar-user-info">
+            <strong>Admin</strong>
+            <small>admin@pid2029.id</small>
+          </div>
+        </div>
+ 
+        <button class="logout-btn" onclick="location.href = '/login.html'">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Keluar</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main>
+      <!-- TOPBAR -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button
+            class="sidebar-toggle-btn"
+            id="sidebarToggleBtn"
+            aria-label="Buka menu"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <div class="topbar-title">
+            <h2>Data Wilayah</h2>
+            <small>Master data hierarki wilayah pemilu</small>
+          </div>
+        </div>
+
+        <div class="right">
+          <i class="fa-solid fa-bell"></i>
+          <i class="fa-solid fa-envelope"></i>
+          <img src="https://i.pravatar.cc/45" />
+        </div>
+      </header>
+
+      <!-- CONTENT -->
+      <section class="wilayah-container">
+        <!-- PAGE HEADER -->
+        <div class="page-header">
+          <div style="display: none;">
+            <h1>Data Wilayah</h1>
+            <p>
+              Fondasi relasi seluruh sistem &mdash; Provinsi &rarr;
+              Kabupaten/Kota &rarr; Kecamatan &rarr; Desa/Kelurahan &rarr;
+              TPS.
+            </p>
+          </div>
+          
+          <!-- TABS -->
+          <div class="tabs" id="wilayahTabs">
+            <button class="tab active" data-tab="provinsi">Provinsi</button>
+            <button class="tab" data-tab="kabupaten">Kab/Kota</button>
+            <button class="tab" data-tab="kecamatan">Kecamatan</button>
+            <button class="tab" data-tab="desa">Desa</button>
+            <button class="tab" data-tab="tps">TPS</button>
+          </div>
+
+          <button class="btn-primary" id="btnTambahWilayah">
+            <i class="fa-solid fa-plus"></i>
+            Tambah Wilayah
+          </button>
+        </div>
+
+        <!-- FILTER WILAYAH -->
+        <div class="wilayah-widget filter-widget">
+          <div class="wilayah-widget-header">
+            <h3><i class="fa-solid fa-filter"></i> Filter Wilayah</h3>
+          </div>
+
+          <div class="filter-bar">
+            <div class="filter-group">
+              <label>Provinsi</label>
+              <select id="filterProvinsi">
+                <option value="">Kalimantan Timur</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label>Kabupaten/Kota</label>
+              <select id="filterKabupaten">
+                <option value="">Semua Kabupaten/Kota</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label>Kecamatan</label>
+              <select id="filterKecamatan" disabled>
+                <option value="">Semua Kecamatan</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label>Desa/Kelurahan</label>
+              <select id="filterDesa" disabled>
+                <option value="">Semua Desa</option>
+              </select>
+            </div>
+
+            <button class="btn-reset-filter" id="resetFilterBtn">
+              <i class="fa-solid fa-rotate-left"></i>
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- TOOLBAR: SEARCH + COUNT -->
+        <div class="wilayah-widget table-widget">
+          <div class="toolbar">
+            <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Cari kode, nama, atau wilayah induk..."
+              />
+            </div>
+            <span class="data-count" id="dataCount">0 Data</span>
+          </div>
+
+          <div class="table-responsive">
+            <table class="dashboard-table" id="wilayahTable">
+              <thead id="wilayahTableHead"></thead>
+              <tbody id="wilayahTableBody"></tbody>
+            </table>
+          </div>
+
+          <div class="pagination" id="pagination"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- MODAL: TAMBAH / EDIT WILAYAH -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 id="modalTitle">Tambah Wilayah</h3>
+          <button class="modal-close-btn" id="modalCloseBtn">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-field">
+            <label>Jenis Wilayah</label>
+            <select id="modalJenis">
+              <option value="provinsi">Provinsi</option>
+              <option value="kabupaten">Kabupaten/Kota</option>
+              <option value="kecamatan" selected>Kecamatan</option>
+              <option value="desa">Desa/Kelurahan</option>
+              <option value="tps">TPS</option>
+            </select>
+          </div>
+
+          <div class="modal-field" id="fieldProvinsi">
+            <label>Provinsi</label>
+            <select id="modalProvinsi" disabled>
+              <option value="1">Kalimantan Timur</option>
+            </select>
+          </div>
+
+          <div class="modal-field hidden" id="fieldKabupaten">
+            <label>Kabupaten/Kota</label>
+            <select id="modalKabupaten"></select>
+          </div>
+
+          <div class="modal-field hidden" id="fieldKecamatan">
+            <label>Kecamatan</label>
+            <select id="modalKecamatan"></select>
+          </div>
+
+          <div class="modal-field hidden" id="fieldDesa">
+            <label>Desa/Kelurahan</label>
+            <select id="modalDesa"></select>
+          </div>
+
+          <div class="modal-field" id="fieldNama">
+            <label id="labelNama">Nama Wilayah</label>
+            <input type="text" id="modalNama" placeholder="cth. Samarinda Utara" />
+          </div>
+
+          <div class="modal-field">
+            <label>Kode Wilayah</label>
+            <input type="text" id="modalKode" placeholder="cth. 64.72.01" />
+          </div>
+
+          <div class="modal-field-row hidden" id="fieldDptTarget">
+            <div class="modal-field">
+              <label>DPT</label>
+              <input type="number" id="modalDpt" min="0" step="100" />
+            </div>
+            <div class="modal-field">
+              <label>Target Suara</label>
+              <input type="number" id="modalTarget" min="0" step="100" />
+            </div>
+          </div>
+
+          <div class="modal-field">
+            <label>Status</label>
+            <select id="modalStatus">
+              <option value="Aktif">Aktif</option>
+              <option value="Nonaktif">Nonaktif</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn-secondary" id="modalCancelBtn">Batal</button>
+          <button class="btn-primary" id="modalSaveBtn">Simpan</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../../assets/js/app.js"></script>
+    <script src="../../assets/js/master-data/wilayah.js"></script>
+  </body>
+</html>
